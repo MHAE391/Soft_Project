@@ -1,0 +1,21 @@
+- Hobby:-
+	- id
+	- name
+	- description
+	- sessions
+	- experience
+	- timeOfSession
+	- language
+	- status	> online / offline
+	- place
+	- price
+
+	- tools		deprecated for now
+	- category	deprecated for now
+
+	
+	
+	- Select hobby
+	- Create hobby
+	- Update hobby
+	- Delete hobby
