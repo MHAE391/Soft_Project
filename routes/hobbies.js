@@ -76,6 +76,29 @@ router.post("/", (req, res) => {
   return res.status(201).send(hobbyEntity); //I should redirect to get individual endpoint
 });
 
+router.put("/:id", (req, res) => {
+  const hobbyEntity = hobbies.find((h) => h.id === +req.params.id);
+  if (!hobbyEntity)
+    return res.status(404).send("The hobby with the given Id was not found");
+
+  const { error } = validateAgainstErrors(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  //Should I use something ? to map it like Auto Mapper?
+  //Maybe I can refactor it
+  hobbyEntity.name = req.body.name;
+  hobbyEntity.description = req.body.description;
+  hobbyEntity.sessions = req.body.sessions;
+  hobbyEntity.experience = req.body.experience;
+  hobbyEntity.timeOfSession = req.body.timeOfSession;
+  hobbyEntity.language = req.body.language;
+  hobbyEntity.status = req.body.status;
+  hobbyEntity.place = req.body.place;
+  hobbyEntity.priceInCent = req.body.priceInCent;
+
+  return res.status(201).send(hobbyEntity);
+});
+
 function validateAgainstErrors(hobbyEntity) {
   const scheme = {
     name: Joi.string().min(3).required(),
