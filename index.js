@@ -1,8 +1,10 @@
 const express = require("express");
+const app = express();
 
 const hobbies = require("./routes/hobbies");
 
-const app = express();
+//Built in middleware
+app.use(express.json());
 
 app.use("/api/hobbies", hobbies);
 

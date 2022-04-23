@@ -19,3 +19,23 @@
 	- Create hobby
 	- Update hobby
 	- Delete hobby
+
+
+
+
+
+- Dummy data for testing:-
+
+{
+    "name": "Programming",
+    "description": "You will learn how to be a program like a bro",
+    "sessions": 30,
+    "experienceInYears": 18,
+    "timeOfSessionInMinuts": 120,
+    "language": "English",
+    "status": "Online",
+    "place": "Egypt",
+    "priceInCent": 350000
+}
+
+

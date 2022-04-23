@@ -53,4 +53,23 @@ router.get("/:id", (req, res) => {
     : res.status(200).send(hobbyEntity);
 });
 
+router.post("/", (req, res) => {
+  const hobbyEntity = {
+    id: hobbies.length + 1,
+    name: req.body.name,
+    description: req.body.description,
+    sessions: req.body.sessions,
+    experienceInYears: req.body.experienceInYears,
+    timeOfSessionInMinuts: req.body.timeOfSessionInMinuts,
+    language: req.body.language,
+    status: req.body.status,
+    place: req.body.place,
+    priceInCent: req.body.priceInCent,
+  };
+
+  hobbies.push(hobbyEntity);
+
+  return res.status(201).send(hobbyEntity); //I should redirect to get individual endpoint
+});
+
 module.exports = router;
