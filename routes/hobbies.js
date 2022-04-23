@@ -68,6 +68,15 @@ router.post("/", (req, res) => {
     priceInCent: req.body.priceInCent,
   };
 
+  const { error } = validateAgainstErrors(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  hobbies.push(hobbyEntity);
+
+  return res.status(201).send(hobbyEntity); //I should redirect to get individual endpoint
+});
+
+function validateAgainstErrors(hobbyEntity) {
   const scheme = {
     name: Joi.string().min(3).required(),
     description: Joi.string().min(30).max(3000).required(),
@@ -84,12 +93,7 @@ router.post("/", (req, res) => {
     priceInCent: Joi.number().positive().greater(0).required(),
   };
 
-  const { error } = Joi.validate(req.body, scheme);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  hobbies.push(hobbyEntity);
-
-  return res.status(201).send(hobbyEntity); //I should redirect to get individual endpoint
-});
+  return Joi.validate(hobbyEntity, scheme);
+}
 
 module.exports = router;
