@@ -1,46 +1,9 @@
 const Joi = require("joi");
 const express = require("express");
 
-const router = express.Router();
+const hobbies = require("../static-data/hobbies");
 
-const hobbies = [
-  {
-    id: 1,
-    name: "Dance",
-    description: "You will learn how to dance like a bro",
-    sessions: 6,
-    experienceInYears: 3,
-    timeOfSessionInMinuts: 30.0,
-    language: "Arabic",
-    status: "Offline",
-    place: "Egypt",
-    priceInCent: 58000,
-  },
-  {
-    id: 2,
-    name: "Cooking",
-    description: "You will learn how to be a Cooker like a bro",
-    sessions: 8,
-    experienceInYears: 10,
-    timeOfSessionInMinuts: 45,
-    language: "Arabic",
-    status: "Online",
-    place: "Egypt",
-    priceInCent: 152000,
-  },
-  {
-    id: 3,
-    name: "Music",
-    description: "You will learn how to be music producer like a bro",
-    sessions: 10,
-    experienceInYears: 8,
-    timeOfSessionInMinuts: 55.0,
-    language: "Arabic",
-    status: "Offline",
-    place: "Egypt",
-    priceInCent: 63500,
-  },
-];
+const router = express.Router();
 
 router.get("/", (req, res) => {
   res.status(200).send(hobbies);
