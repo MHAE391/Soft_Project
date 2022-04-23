@@ -18,6 +18,7 @@
   "homepage": "https://github.com/MHAE391/Soft_Project#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "joi": "^13.1.0",
     "nodemon": "^2.0.15"
   }
 }

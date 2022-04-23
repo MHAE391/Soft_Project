@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const express = require("express");
 
 const router = express.Router();
@@ -66,6 +67,25 @@ router.post("/", (req, res) => {
     place: req.body.place,
     priceInCent: req.body.priceInCent,
   };
+
+  const scheme = {
+    name: Joi.string().min(3).required(),
+    description: Joi.string().min(30).max(3000).required(),
+    sessions: Joi.number().positive().greater(0).min(2).max(100),
+    experienceInYears: Joi.number().positive().greater(0).required(),
+    timeOfSessionInMinuts: Joi.number()
+      .positive()
+      .greater(0)
+      .min(10)
+      .required(),
+    language: Joi.string().min(3).required(),
+    status: Joi.string().required(), //That's should be enum by JS got no enums
+    place: Joi.string().min(3).required(),
+    priceInCent: Joi.number().positive().greater(0).required(),
+  };
+
+  const { error } = Joi.validate(req.body, scheme);
+  if (error) return res.status(400).send(error.details[0].message);
 
   hobbies.push(hobbyEntity);
 
