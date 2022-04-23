@@ -1,0 +1,107 @@
+{
+  "info": {
+    "_postman_id": "9be732d7-6601-448f-acc4-3706e409784f",
+    "name": "Suplift-Requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Hobbies",
+      "item": [
+        {
+          "name": "Get all Hobbies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/hobbies",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "hobbies"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get an individual Hobby",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/hobbies/2",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "hobbies", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post a Hobby with validation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Sing\",\r\n    \"description\": \"You will learn how to sing like a bro \",\r\n    \"sessions\": 60,\r\n    \"experienceInYears\": 30,\r\n    \"timeOfSessionInMinuts\": 300,\r\n    \"language\": \"Arabic\",\r\n    \"status\": \"Offline\",\r\n    \"place\": \"Egypt\",\r\n    \"priceInCent\": 2222\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/hobbies/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "hobbies", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Put a Hobby with validation",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Sing updated\",\r\n    \"description\": \"You will learn how to sing like a bro updated\",\r\n    \"sessions\": 50,\r\n    \"experienceInYears\": 10,\r\n    \"timeOfSessionInMinuts\": 220,\r\n    \"language\": \"Arabic updated\",\r\n    \"status\": \"Offline updated\",\r\n    \"place\": \"Egypt updated\",\r\n    \"priceInCent\": 11111\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/hobbies/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "hobbies", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a Hobby",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/hobbies/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "hobbies", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
