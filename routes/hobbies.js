@@ -99,6 +99,17 @@ router.put("/:id", (req, res) => {
   return res.status(201).send(hobbyEntity);
 });
 
+router.delete("/:id", (req, res) => {
+  const hobbyEntity = hobbies.find((h) => h.id === +req.params.id);
+  if (!hobbyEntity)
+    return res.status(404).send("The hobby with the given Id was not found");
+
+  const hobbyEntityIndex = hobbies.indexOf(hobbyEntity);
+  hobbies.splice(hobbyEntityIndex, 1);
+
+  return res.status(204).send(hobbyEntity);
+});
+
 function validateAgainstErrors(hobbyEntity) {
   const scheme = {
     name: Joi.string().min(3).required(),
