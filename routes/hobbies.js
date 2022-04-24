@@ -1,4 +1,4 @@
-const Joi = require("joi");
+ const Joi = require("joi");
 const express = require("express");
 
 const hobbies = require("../static-data/hobbies");
@@ -32,6 +32,7 @@ router.post("/", (req, res) => {
   };
 
   const { error } = validateAgainstErrors(req.body);
+  
   if (error) return res.status(400).send(error.details[0].message);
 
   hobbies.push(hobbyEntity);
