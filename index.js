@@ -1,7 +1,15 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
 const hobbies = require("./routes/hobbies");
+
+mongoose
+  .connect("mongodb://localhost/Suplift")
+  .then(() => console.log("Connected successfully to MongoDB..."))
+  .catch((error) =>
+    console.log("Cloud not connect to MongoDB...look at details: ", error)
+  );
 
 //Built in middleware
 app.use(express.json());
