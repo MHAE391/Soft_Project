@@ -1,59 +1,45 @@
 const express = require("express");
-
-const tools = require("../static-data/Tools");
+const Joi = require("joi");
+const tools = require("../Static-data/tools");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.status(200).send(hobbies);
-  });
+  res.status(200).send(tools);
+});
 
-  router.get("/:id", (req, res) => {
-    const toolEntity = tools.find((h) => h.id === +req.params.id);
-  
-    return !toolEntity
-      ? res.status(404).send("The hobby with the given Id was not found")
-      : res.status(200).send(toolEntity);
-  });
+router.get("/:id", (req, res) => {
+  const toolEntity = tools.find((t) => t.id === +req.params.id);
 
-  router.post("/", (req,res)=>{
-    const toolEntity = {
-        id: tools.length + 1,
-        name: req.body.name,
-        hobbyid: req.body.hobbyid,
-        description: req.body.description,
-        language: req.body.language,
-        status: req.body.status,
-        price: req.body.price,
-      };
-      tools.push(toolEntity);
-      return res.status(201).send(toolEntity); 
-  });
+  return !toolEntity
+    ? res.status(404).send("The tool with the given Id was not found")
+    : res.status(200).send(toolEntity);
+});
 
-   router.put("/:id", (req, res) => {
-    const toolEntity = tools.find((h) => h.id === +req.params.id);
-    if (!toolEntity)
-      return res.status(404).send("The hobby with the given Id was not found");
+router.post("/", (req, res) => {
+  const { error } = validateErrors(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-      toolEntity.name = req.body.name;
-      toolEntity.description = req.body.description;
-      toolEntity.hobbyid = req.body.hobbyid;
-      toolEntity.language = req.body.language;
-      toolEntity.status = req.body.status;
-      toolEntity.price = req.body.price;
-    
-      return res.status(201).send(toolEntity);
-    });
+  const toolEntity = {
+    id: tools.length + 1,
+    name: req.body.name,
+    description: req.body.description,
+    notes: req.body.notes,
+    hobbyId: req.body.hobbyId,
+  };
 
+  tools.push(toolEntity);
+  return res.status(201).send(toolEntity);
+});
 
-    router.delete("/:id", (req, res) => {
-        const toolEntity = tools.find((h) => h.id === +req.params.id);
-        if (!toolEntity)
-          return res.status(404).send(" Id was not found");
-      
-        const toolEntityIndex = tools.indexOf(toolEntity);
-        tools.splice(toolEntityIndex, 1);
-      
-        return res.status(204).send(toolEntity);
-   });
+function validateErrors(toolEntity) {
+  const scheme = {
+    name: Joi.string().required().max(30),
+    description: Joi.string().min(5).max(1000).required(),
+    notes: Joi.string().required(),
+    hobbyId: Joi.number().positive().greater(0).required(),
+  };
 
-      module.exports = router;
+  return Joi.validate(toolEntity, scheme);
+}
+
+module.exports = router;
