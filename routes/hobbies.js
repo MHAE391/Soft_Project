@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  res.status(200).send(await HobbyEntity.find().sort("name"));
+  return res.status(200).send(await HobbyEntity.find().sort("name"));
 });
 
 router.get("/:id", async (req, res) => {

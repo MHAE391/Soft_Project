@@ -4,6 +4,7 @@ const app = express();
 
 const hobbies = require("./routes/hobbies");
 
+//Connection string for all! is not a good approach
 mongoose
   .connect("mongodb://localhost/Suplift")
   .then(() => console.log("Connected successfully to MongoDB..."))
