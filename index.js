@@ -9,10 +9,14 @@ mongoose
   .connect("mongodb://localhost/Suplift")
   .then(() => console.log("Connected successfully to MongoDB..."))
   .catch((error) =>
-    console.log("Cloud not connect to MongoDB...look at details: ", error)
+    console.log(
+      "Cloud not connect to MongoDB...look for the Stack Trace: ",
+      error
+    )
   );
 
 //Built in middleware
+//Should I make a Custom Middleware for handle global exceptions? and to make the app fails gracefully?
 app.use(express.json());
 
 app.use("/api/hobbies", hobbies);

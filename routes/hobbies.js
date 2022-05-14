@@ -3,9 +3,12 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  return res.status(200).send(await HobbyEntity.find().sort("name"));
-});
+//I know returning the whole object from DB it not ideal thing
+//I must return a DTO it was Auto Mapper in .net Core
+//I did not search for alternative for Node.js and Express
+router.get("/", async (req, res) =>
+  res.status(200).send(await HobbyEntity.find().sort("name"))
+);
 
 router.get("/:id", async (req, res) => {
   const hobbyEntity = await HobbyEntity.findById(req.params.id);
