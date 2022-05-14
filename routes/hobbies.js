@@ -55,6 +55,7 @@ router.put("/:id", async (req, res) => {
       status: req.body.status,
       place: req.body.place,
       priceInCent: req.body.priceInCent,
+      tools: req.body.tools,
     },
     { new: true }
   );
