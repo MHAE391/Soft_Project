@@ -9,7 +9,7 @@
       "name": "Hobbies",
       "item": [
         {
-          "name": "Get all Hobbies",
+          "name": "Get all Hobbies with Tools",
           "request": {
             "method": "GET",
             "header": [],
@@ -24,28 +24,28 @@
           "response": []
         },
         {
-          "name": "Get an individual Hobby",
+          "name": "Get an individual Hobby with the tools",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/api/hobbies/626697972601899e9d37d798",
+              "raw": "http://localhost:3000/api/hobbies/627f8c5462d522eaf13feb12",
               "protocol": "http",
               "host": ["localhost"],
               "port": "3000",
-              "path": ["api", "hobbies", "626697972601899e9d37d798"]
+              "path": ["api", "hobbies", "627f8c5462d522eaf13feb12"]
             }
           },
           "response": []
         },
         {
-          "name": "Post a Hobby with validation",
+          "name": "Post a Hobby and tools with validation",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Sing\",\r\n    \"description\": \"You will learn how to sing like a bro \",\r\n    \"sessions\": 60,\r\n    \"experienceInYears\": 30,\r\n    \"timeOfSessionInMinuts\": 300,\r\n    \"language\": \"Arabic\",\r\n    \"status\": \"Offline\",\r\n    \"place\": \"Egypt\",\r\n    \"priceInCent\": 2222\r\n}",
+              "raw": "{       \r\n        \"name\": \"Cooking 21\",\r\n        \"description\": \"You will learn how to Cook like a bro\",\r\n        \"sessions\": 16,\r\n        \"experienceInYears\": 55,\r\n        \"timeOfSessionInMinuts\": 90,\r\n        \"language\": \"Arabic\",\r\n        \"status\": \"Online\",\r\n        \"place\": \"Netherlands\",\r\n        \"priceInCent\": 3625,\r\n        \"tools\": [\r\n            {\r\n                \"title\":\"test\",\r\n                \"notes\":\"Hello get your footbacll and fuck your mother\"\r\n            }\r\n        ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -63,13 +63,13 @@
           "response": []
         },
         {
-          "name": "Put a Hobby with validation",
+          "name": "Update a Hobby and tools with validation",
           "request": {
             "method": "PUT",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Sing updated\",\r\n    \"description\": \"You will learn how to sing like a bro updated\",\r\n    \"sessions\": 50,\r\n    \"experienceInYears\": 10,\r\n    \"timeOfSessionInMinuts\": 220,\r\n    \"language\": \"Arabic updated\",\r\n    \"status\": \"Offline updated\",\r\n    \"place\": \"Egypt updated\",\r\n    \"priceInCent\": 11111\r\n}",
+              "raw": "{       \r\n        \"name\": \"Cooking updated\",\r\n        \"description\": \"You will learn how to Cook like a bro updated\",\r\n        \"sessions\": 16,\r\n        \"experienceInYears\": 55,\r\n        \"timeOfSessionInMinuts\": 90,\r\n        \"language\": \"Arabic\",\r\n        \"status\": \"Online\",\r\n        \"place\": \"Netherlands\",\r\n        \"priceInCent\": 3625,\r\n        \"tools\": [\r\n            {\r\n                \"title\":\"test updated\",\r\n                \"notes\":\"Hello get your footbacll and fuck your mother updated\"\r\n            }\r\n        ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -77,26 +77,26 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/api/hobbies/626697972601899e9d37d798",
+              "raw": "http://localhost:3000/api/hobbies/627f8c5462d522eaf13feb12",
               "protocol": "http",
               "host": ["localhost"],
               "port": "3000",
-              "path": ["api", "hobbies", "626697972601899e9d37d798"]
+              "path": ["api", "hobbies", "627f8c5462d522eaf13feb12"]
             }
           },
           "response": []
         },
         {
-          "name": "Delete a Hobby",
+          "name": "Delete a Hobby with tools",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/api/hobbies/626697972601899e9d37d798",
+              "raw": "http://localhost:3000/api/hobbies/627f8c5462d522eaf13feb12",
               "protocol": "http",
               "host": ["localhost"],
               "port": "3000",
-              "path": ["api", "hobbies", "626697972601899e9d37d798"]
+              "path": ["api", "hobbies", "627f8c5462d522eaf13feb12"]
             }
           },
           "response": []
