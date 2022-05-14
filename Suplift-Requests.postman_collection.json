@@ -29,11 +29,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/api/hobbies/2",
+              "raw": "http://localhost:3000/api/hobbies/626697972601899e9d37d798",
               "protocol": "http",
               "host": ["localhost"],
               "port": "3000",
-              "path": ["api", "hobbies", "2"]
+              "path": ["api", "hobbies", "626697972601899e9d37d798"]
             }
           },
           "response": []
@@ -77,11 +77,11 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/api/hobbies/1",
+              "raw": "http://localhost:3000/api/hobbies/626697972601899e9d37d798",
               "protocol": "http",
               "host": ["localhost"],
               "port": "3000",
-              "path": ["api", "hobbies", "1"]
+              "path": ["api", "hobbies", "626697972601899e9d37d798"]
             }
           },
           "response": []
@@ -92,11 +92,11 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:3000/api/hobbies/1",
+              "raw": "http://localhost:3000/api/hobbies/626697972601899e9d37d798",
               "protocol": "http",
               "host": ["localhost"],
               "port": "3000",
-              "path": ["api", "hobbies", "1"]
+              "path": ["api", "hobbies", "626697972601899e9d37d798"]
             }
           },
           "response": []
