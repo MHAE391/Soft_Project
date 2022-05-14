@@ -70,8 +70,8 @@ function validateAgainstErrors(hobbyEntity) {
     tools: Joi.array().items(
       Joi.object({
         title: Joi.string().min(3).max(255).required(),
-        notes: Joi.string().min(30).max(3000).required(),
-      })
+        notes: Joi.string().min(30).max(3000),
+      }).required()
     ),
   };
 
