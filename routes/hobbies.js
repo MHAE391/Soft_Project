@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const { HobbyEntity, validate } = require("../models/hobby");
 const express = require("express");
 
@@ -22,20 +23,22 @@ router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let hobbyEntity = new HobbyEntity({
-    name: req.body.name,
-    description: req.body.description,
-    sessions: req.body.sessions,
-    experienceInYears: req.body.experienceInYears,
-    timeOfSessionInMinuts: req.body.timeOfSessionInMinuts,
-    language: req.body.language,
-    status: req.body.status,
-    place: req.body.place,
-    priceInCent: req.body.priceInCent,
-    tools: req.body.tools,
-  });
+  const hobbyEntity = new HobbyEntity(
+    _.pick(req.body, [
+      "name",
+      "description",
+      "sessions",
+      "experienceInYears",
+      "timeOfSessionInMinuts",
+      "language",
+      "status",
+      "place",
+      "priceInCent",
+      "tools",
+    ])
+  );
 
-  hobbyEntity = await hobbyEntity.save();
+  await hobbyEntity.save();
 
   return res.status(201).send(hobbyEntity); //I should redirect to get individual endpoint
 });
@@ -46,20 +49,18 @@ router.put("/:id", async (req, res) => {
 
   const hobbyEntity = await HobbyEntity.findByIdAndUpdate(
     req.params.id,
-    {
-      //Should I use something ? to map it like Auto Mapper?
-      //Maybe I can refactor it later
-      name: req.body.name,
-      description: req.body.description,
-      sessions: req.body.sessions,
-      experience: req.body.experience,
-      timeOfSession: req.body.timeOfSession,
-      language: req.body.language,
-      status: req.body.status,
-      place: req.body.place,
-      priceInCent: req.body.priceInCent,
-      tools: req.body.tools,
-    },
+    _.pick(req.body, [
+      "name",
+      "description",
+      "sessions",
+      "experienceInYears",
+      "timeOfSessionInMinuts",
+      "language",
+      "status",
+      "place",
+      "priceInCent",
+      "tools",
+    ]),
     { new: true }
   );
 
