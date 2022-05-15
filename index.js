@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const app = express();
 
-const globalExceptionMiddleware = require("./middleware/globalMiddleware");
-const hobbies = require("./routes/hobbies");
-const users = require("./routes/users");
+const app = express();
 
 //Connection string for all! is not a good approach
 mongoose
@@ -18,13 +15,13 @@ mongoose
   );
 
 //Built in middleware
-//Should I make a Custom Middleware for handle global exceptions? and to make the app fails gracefully?
 app.use(express.json());
 
-app.use("/api/hobbies", hobbies);
-app.use("/api/users", users);
+app.use("/api/hobbies", require("./routes/hobbies"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/auth", require("./routes/auth"));
 
-app.use(globalExceptionMiddleware);
+app.use(require("./middleware/globalMiddleware"));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
