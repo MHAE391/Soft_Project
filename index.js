@@ -4,6 +4,7 @@ const app = express();
 
 const globalExceptionMiddleware = require("./middleware/globalMiddleware");
 const hobbies = require("./routes/hobbies");
+const users = require("./routes/users");
 
 //Connection string for all! is not a good approach
 mongoose
@@ -21,6 +22,7 @@ mongoose
 app.use(express.json());
 
 app.use("/api/hobbies", hobbies);
+app.use("/api/users", users);
 
 app.use(globalExceptionMiddleware);
 
