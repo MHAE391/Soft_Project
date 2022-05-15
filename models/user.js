@@ -50,7 +50,7 @@ function validateAgainstErrors(user) {
     password: Joi.string()
       .min(5)
       .max(255)
-      .regex(new RegExp("/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/"))
+      .regex(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
       // .message("Password is not complex enough!") //I should give a meaning full error message
       .required(),
   };

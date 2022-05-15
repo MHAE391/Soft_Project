@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const { UserEntity, validate } = require("../models/user");
 const express = require("express");
 
@@ -10,17 +11,31 @@ router.post("/", async (req, res) => {
   let user = await UserEntity.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User already registered.");
 
-  user = new UserEntity({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    password: req.body.password,
-  });
+  //   user = new UserEntity({
+  //     firstName: req.body.firstName,
+  //     lastName: req.body.lastName,
+  //     email: req.body.email,
+  //     phoneNumber: req.body.phoneNumber,
+  //     password: req.body.password,
+  //   });
+
+  user = new UserEntity(
+    _.pick(req.body, [
+      "firstName",
+      "lastName",
+      "email",
+      "phoneNumber",
+      "password",
+    ])
+  );
 
   await user.save();
 
-  res.status(201).send(user);
+  res
+    .status(201)
+    .send(
+      _.pick(user, ["_id", "firstName", "lastName", "phoneNumber", "email"])
+    );
 });
 
 module.exports = router;
