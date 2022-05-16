@@ -1,11 +1,11 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 
 const app = express();
 
-//Connection string for all! is not a good approach
 mongoose
-  .connect("mongodb://localhost/Suplift")
+  .connect(process.env.MONGODBCONNECTIONSTRING)
   .then(() => console.log("Connected successfully to MongoDB..."))
   .catch((error) =>
     console.log(
@@ -23,5 +23,5 @@ app.use("/api/auth", require("./routes/auth"));
 
 app.use(require("./middleware/globalMiddleware"));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 2001;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
