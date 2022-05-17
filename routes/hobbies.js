@@ -1,3 +1,5 @@
+const admin = require("../middleware/adminMiddleware");
+const auth = require("../middleware/authMiddleware");
 const _ = require("lodash");
 const { HobbyEntity, validate } = require("../models/hobby");
 const express = require("express");
@@ -19,7 +21,7 @@ router.get("/:id", async (req, res) => {
     : res.status(200).send(hobbyEntity);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -43,7 +45,7 @@ router.post("/", async (req, res) => {
   return res.status(201).send(hobbyEntity); //I should redirect to get individual endpoint
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -70,7 +72,7 @@ router.put("/:id", async (req, res) => {
   return res.status(201).send(hobbyEntity);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const hobbyEntity = await HobbyEntity.findByIdAndRemove(req.params.id);
 
   if (!hobbyEntity)

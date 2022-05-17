@@ -1,9 +1,14 @@
+const auth = require("../middleware/authMiddleware");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { UserEntity, validate } = require("../models/user");
 const express = require("express");
 
 const router = express.Router();
+
+router.get("/me", auth, async (req, res) =>
+  res.send(await UserEntity.findById(req.user._id).select("-password"))
+);
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
@@ -26,6 +31,7 @@ router.post("/", async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
 
+  console.log(user.generateAuthToken());
   res
     .header("x-auth-token", user.generateAuthToken())
     .send(
