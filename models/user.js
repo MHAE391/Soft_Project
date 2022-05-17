@@ -1,41 +1,46 @@
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const UserEntity = mongoose.model(
-  "User",
-  new mongoose.Schema({
-    firstName: {
-      type: String,
-      required: true,
-      minlength: 0,
-      maxlength: 50,
-    },
-    lastName: {
-      type: String,
-      required: true,
-      minlength: 0,
-      maxlength: 50,
-    },
-    email: {
-      type: String,
-      required: true,
-      minlength: 2,
-      maxlength: 255,
-      unique: true,
-    },
-    phoneNumber: {
-      type: String,
-      required: true,
-      length: 12,
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 5,
-      maxlength: 1024,
-    },
-  })
-);
+const userSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+    minlength: 0,
+    maxlength: 50,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    minlength: 0,
+    maxlength: 50,
+  },
+  email: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 255,
+    unique: true,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+    length: 12,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 1024,
+  },
+});
+
+userSchema.methods.generateAuthToken = function () {
+  return jwt.sign({ _id: this._id }, config.get("jwtPrivateKey"));
+};
+
+const UserEntity = mongoose.model("User", userSchema);
 
 function validateAgainstErrors(user) {
   const scheme = {
