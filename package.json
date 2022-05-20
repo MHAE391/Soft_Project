@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/MHAE391/Soft_Project#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
+    "dotenv": "^16.0.1",
     "express": "^4.17.3",
     "joi": "^13.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.4",
     "mongoose": "^6.3.1",
     "nodemon": "^2.0.15"
   }

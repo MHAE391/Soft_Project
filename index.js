@@ -1,12 +1,17 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
+const config = require("config");
+
 const app = express();
 
-const hobbies = require("./routes/hobbies");
+if (!config.get("jwtPrivateKey")) {
+  console.log("FATAL ERROR: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
 
-//Connection string for all! is not a good approach
 mongoose
-  .connect("mongodb://localhost/Suplift")
+  .connect(process.env.MONGODBCONNECTIONSTRING)
   .then(() => console.log("Connected successfully to MongoDB..."))
   .catch((error) =>
     console.log(
@@ -16,10 +21,13 @@ mongoose
   );
 
 //Built in middleware
-//Should I make a Custom Middleware for handle global exceptions? and to make the app fails gracefully?
 app.use(express.json());
 
-app.use("/api/hobbies", hobbies);
+app.use("/api/hobbies", require("./routes/hobbies"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/auth", require("./routes/auth"));
 
-const port = process.env.PORT || 3000;
+app.use(require("./middleware/globalMiddleware"));
+
+const port = process.env.PORT || 2001;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
