@@ -5,10 +5,10 @@ const config = require("config");
 
 const app = express();
 
-if (!config.get("jwtPrivateKey")) {
-  console.log("FATAL ERROR: jwtPrivateKey is not defined.");
-  process.exit(1);
-}
+// if (!config.get("jwtPrivateKey")) {
+//   console.log("FATAL ERROR: jwtPrivateKey is not defined.");
+//   process.exit(1);
+// }
 
 mongoose
   .connect(process.env.MONGODBCONNECTIONSTRING)
