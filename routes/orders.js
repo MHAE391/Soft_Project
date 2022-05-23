@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const auth = require("../middleware/authMiddleware");
 const { OrderEntity, validate } = require("../models/order");
 
 const express = require("express");
@@ -12,10 +13,9 @@ router.post("/make-order", async (req, res) => {
     _.pick(req.body, ["hobbyId", "learnerId", "coachId"])
   );
 
-  if (orderEntity.coachId === orderEntity.learnerId)
-    return res.status(400).send("Coach and Learner must not be same");
+  if (orderEntity.coachId.toString() === orderEntity.learnerId.toString())
+    return res.status(400).send("Coach and Learner must not be same ID");
 
-  console.log(orderEntity);
   await orderEntity.save();
 
   res.status(201).send(orderEntity);
