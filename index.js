@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 mongoose
-  .connect("mongodb://0.0.0.0:27017/Suplift")
+  .connect(process.env.MONGODBCONNECTIONSTRING)
   .then(() => console.log("Connected successfully to MongoDB..."))
   .catch((error) =>
     console.log(
