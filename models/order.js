@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const orderSchema = new mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default: new Date(),
@@ -26,5 +26,5 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
-const OrderEntity = mongoose.model("order",orderSchema);
+const OrderEntity = mongoose.model("order",OrderSchema);
 exports.OrderEntity = OrderEntity; 

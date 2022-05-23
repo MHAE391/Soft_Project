@@ -17,6 +17,7 @@ router.post("/",async(req,res)=>{
     }
 
     console.log(orderEntity);
+    orderEntity.save();
    // res.send(orderEntity);
 })
 
