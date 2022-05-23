@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Joi = require("joi");
 
 
 const OrderSchema = new mongoose.Schema({
@@ -6,10 +7,7 @@ const OrderSchema = new mongoose.Schema({
         type:Date,
         default: new Date(),
     },
-    notes:{
-        type:String,
-        required: true
-    },
+   
     coachId:{
         type:mongoose.Types.ObjectId,
         required: true
@@ -26,5 +24,21 @@ const OrderSchema = new mongoose.Schema({
     }
 });
 
-const OrderEntity = mongoose.model("order",OrderSchema);
-exports.OrderEntity = OrderEntity; 
+//const OrderEntity = mongoose.model("Order",OrderSchema);
+
+function validateAgainstErrors(orderEntity) {
+    const scheme = {
+      
+      createdAt: Joi.required(),
+      coachId: Joi.string().required(),
+      learnerId: Joi.string().required(),
+      hobbyId: Joi.string().required(),
+
+      
+        
+    };
+  
+    return Joi.validate(orderEntity, scheme);
+  }
+exports.OrderEntity =  mongoose.model("Order",OrderSchema);; 
+exports.validate = validateAgainstErrors;
