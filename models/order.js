@@ -15,12 +15,12 @@ const OrderSchema = new mongoose.Schema({
         required: true
     },
     learnerId:{
-        type:String,
+        type:mongoose.Types.ObjectId,
         required: true
 
     },
     hobbyId:{
-        type:String,
+        type:mongoose.Types.ObjectId,
         required: true
 
     }
