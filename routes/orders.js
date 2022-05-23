@@ -5,7 +5,7 @@ const { OrderEntity, validate } = require("../models/order");
 const express = require("express");
 const router = express.Router();
 
-router.post("/make-order", async (req, res) => {
+router.post("/make-order", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 

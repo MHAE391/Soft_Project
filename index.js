@@ -1,14 +1,8 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
-const config = require("config");
 
 const app = express();
-
-// if (!config.get("jwtPrivateKey")) {
-//   console.log("FATAL ERROR: jwtPrivateKey is not defined.");
-//   process.exit(1);
-// }
 
 mongoose
   .connect("mongodb://0.0.0.0:27017/Suplift")
