@@ -1,5 +1,5 @@
-const admin = require("../middleware/adminMiddleware");
-const auth = require("../middleware/authMiddleware");
+const admin = require("../middleware/admin-middleware");
+const auth = require("../middleware/auth-middleware");
 const _ = require("lodash");
 const { HobbyEntity, validate } = require("../models/hobby");
 const express = require("express");

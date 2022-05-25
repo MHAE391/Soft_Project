@@ -22,7 +22,7 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/orders", require("./routes/orders"));
 
-app.use(require("./middleware/globalMiddleware"));
+app.use(require("./middleware/global-middleware"));
 
 const port = process.env.PORT || 2000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
