@@ -13,6 +13,16 @@ router.get("/", async (req, res) =>
   res.status(200).send(await HobbyEntity.find().sort("name"))
 );
 
+router.get("/search-by-name", async (req, res) => {
+  const result = await HobbyEntity.find({
+    name: req.query.search,
+  });
+
+  return !result
+    ? res.status(404).send("No item found with this search key")
+    : res.status(200).send(result);
+});
+
 router.get("/:id", async (req, res) => {
   const hobbyEntity = await HobbyEntity.findById(req.params.id);
 
