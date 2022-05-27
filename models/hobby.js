@@ -53,7 +53,7 @@ const hobbyEntitySchema = new mongoose.Schema({
 const HobbyEntity = mongoose.model("Hobby", hobbyEntitySchema);
 
 function validateAgainstErrors(hobbyEntity) {
-  const scheme = {
+  const schema = {
     name: Joi.string().min(3).required(),
     description: Joi.string().min(30).max(3000).required(),
     sessions: Joi.number().positive().greater(0).min(2).max(100).required(),
@@ -75,7 +75,7 @@ function validateAgainstErrors(hobbyEntity) {
     ),
   };
 
-  return Joi.validate(hobbyEntity, scheme);
+  return Joi.validate(hobbyEntity, schema);
 }
 
 exports.HobbyEntity = HobbyEntity;

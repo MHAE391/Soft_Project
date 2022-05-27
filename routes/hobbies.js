@@ -88,7 +88,7 @@ router.delete("/:id", [auth, admin], async (req, res) => {
   if (!hobbyEntity)
     return res.status(404).send("The hobby with the given Id was not found");
 
-  return res.status(204).send(hobbyEntity);
+  return res.status(204).send("Deleted successfully");
 });
 
 module.exports = router;
