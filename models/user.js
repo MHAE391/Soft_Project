@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
@@ -26,7 +25,7 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true,
-    length: 12,
+    length: 11,
   },
   password: {
     type: String,

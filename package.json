@@ -19,7 +19,6 @@
   "homepage": "https://github.com/MHAE391/Soft_Project#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "config": "^3.3.7",
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
     "joi": "^13.1.0",

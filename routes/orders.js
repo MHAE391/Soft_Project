@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const auth = require("../middleware/authMiddleware");
+const auth = require("../middleware/auth-middleware");
 const { OrderEntity, validate } = require("../models/order");
 const stripe = require("stripe")(process.env.STRIPESECRETKEY);
 

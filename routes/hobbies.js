@@ -1,5 +1,5 @@
-const admin = require("../middleware/adminMiddleware");
-const auth = require("../middleware/authMiddleware");
+const admin = require("../middleware/admin-middleware");
+const auth = require("../middleware/auth-middleware");
 const _ = require("lodash");
 const { HobbyEntity, validate } = require("../models/hobby");
 const express = require("express");
@@ -88,7 +88,7 @@ router.delete("/:id", [auth, admin], async (req, res) => {
   if (!hobbyEntity)
     return res.status(404).send("The hobby with the given Id was not found");
 
-  return res.status(204).send(hobbyEntity);
+  return res.status(204).send("Deleted successfully");
 });
 
 module.exports = router;
